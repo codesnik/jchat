@@ -1,9 +1,9 @@
 package chat.support;
 
 import java.util.SortedMap;
-import java.util.List;
+import java.util.Map;
 
 public class Holder {
     public static SortedMap messages;
-    public static List notifications;
+    public static Map clients;
 }

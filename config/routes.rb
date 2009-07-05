@@ -4,8 +4,9 @@ ActionController::Routing::Routes.draw do |map|
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action
-
-  map.resources :messages, :collection => { :poll => :get }
+  map.resources :clients do |client|
+    client.resources :messages, :collection => { :poll => :post }
+  end
 
 
   # Sample of named route
@@ -41,6 +42,5 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+ 
 end
