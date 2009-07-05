@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <%= javascript_include_tag :defaults  %>
+  </head>
+  <body>
+welcome to our chat!
+
+<script>
+  var pooler;
+  function startPolling() {
+    pooler = new Ajax.Updater('messages', '<%= url_for :action => :poll %>', {
+      method: 'POST',
+      onComplete: startPolling
+    });
+  }
+
+  new PeriodicalExecuter(function () {
+    if(pooler && pooler.getStatus() > 0) {
+      startPolling();
+    }
+  }, 1);
+  document.observe('dom:loaded', startPolling);
+</script>
+
+<div id="messages">
+  <%= render :partial => "messages" %>
+</div>
+
+<% remote_form_for :message do |f|%>
+  <%= f.text_field :text %>
+  <%= f.submit %>
+<% end %>
+  </body>
+</html>

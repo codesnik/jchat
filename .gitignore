@@ -21,3 +21,5 @@ config/development.sphinx.conf
 db/sphinx/*
 public/pictures
 *.sql
+*.jar
+*.class

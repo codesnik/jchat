@@ -1,0 +1,6 @@
+<%= @messages.inspect  %>
+<% @messages.each do |index, message| %>
+  <p id="message<%= index %>">
+    <%= message %>
+  </p>
+<% end %>
